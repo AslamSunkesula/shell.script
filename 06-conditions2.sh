@@ -8,7 +8,7 @@ num2=$2
 if [ $num1 -eq $num2 ] #-eq equality check
 then
 
-echo  "Both the variables are same" ] 
+echo  "Both the variables are same" 
 
 else 
 
