@@ -28,9 +28,9 @@ fi
 
 yum install mysql -y
 
-VALIDATE $? "Insatalling mySQL" $>>LOGFILE
+VALIDATE $? "Insatalling mySQL" &>>$LOGFILE
 #passing the 2 arguments to the validate function and $? --> passing input to the validate function to check previous command fail or pass
 
 yum install git -y
 
-VALIDATE $? "Insatalling  git" $>>LOGFILE
+VALIDATE $? "Insatalling  git" &>>$LOGFILE
