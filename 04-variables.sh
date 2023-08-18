@@ -14,6 +14,8 @@ echo "The entered username is : $USERNAME"
 
 #We are hiding the password below :
 
+echo "Please enter the password "
+
 read -s PASSWORD
 
-echo "Please enter the password :$PASSWORD"
+echo "The password entered is  :$PASSWORD"
