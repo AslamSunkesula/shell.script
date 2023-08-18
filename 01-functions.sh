@@ -3,9 +3,9 @@
 
 DATE=$(date +%m-%d-%Y)
 
-SCRIPT_NAEM=$0 #$0 will tell us the script name 
+SCRIPT_NAME=$0 #$0 will tell us the script name 
 
-LOGFILE=/tmp/$SCRIPT_NAEM-$DATE.log
+LOGFILE=/tmp/$SCRIPT_NAME-$DATE.log
 
 VALIDATE() {   # this is a function to check the fail or pass 
 
@@ -26,11 +26,11 @@ if [ $userid -ne 0 ]; then
     exit 1
 fi
 
-yum install mysql -y
+yum install mongod -y
 
-VALIDATE $? "Insatalling mySQL" &>>$LOGFILE
+VALIDATE $? "Insatalling mongod" &>>$LOGFILE
 #passing the 2 arguments to the validate function and $? --> passing input to the validate function to check previous command fail or pass
 
 yum install git -y
 
-VALIDATE $? "Insatalling  git" &>>$LOGFILE
+VALIDATE $? "Insatalling  nginx" &>>$LOGFILE
