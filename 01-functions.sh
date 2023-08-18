@@ -26,11 +26,11 @@ if [ $userid -ne 0 ]; then
     exit 1
 fi
 
-yum install mongod -y
+yum install mysql -y
 
-VALIDATE $? "Insatalling mongod" &>>$LOGFILE
+VALIDATE $? "Insatalling mysql" &>>$LOGFILE
 #passing the 2 arguments to the validate function and $? --> passing input to the validate function to check previous command fail or pass
 
 yum install git -y
 
-VALIDATE $? "Insatalling  nginx" &>>$LOGFILE
+VALIDATE $? "Insatalling  git" &>>$LOGFILE
