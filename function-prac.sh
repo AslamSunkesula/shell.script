@@ -17,10 +17,10 @@ yum install git -y
 if [ $? -ne 0 ]
 
 then 
-echo "$r Installing the git is error "
+echo -e "$r Installing the git is error "
 
 else
-echo "$g Installing the git is success "
+echo  -e "$g Installing the git is success "
 fi
 
 
