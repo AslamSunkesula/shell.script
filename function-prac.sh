@@ -10,29 +10,28 @@ g="\e[32m"
 
 y="\e[33m"
 
-LOGSDIR=/home/centos/shellscript-logs
+LOGSDIR=/c/Users/assua/shellscript-logs
 
 script_name=$0
 
 LOGFILE=$LOGSDIR/$script_name-$DATE.log
 
+if [ $USERID -ne 0 ]
+then
+    echo -e " $r Error : Please run this script with root access"
+    exit 1
+fi
+
 VALIDATE() {
 
     if [ $? -ne 0 ]
      then
-    echo -e "Installing the $2 ......$r Failure "
+        echo -e "Installing the $2 ......$r Failure "
 
     else
         echo -e "Installing the $2.....$g Success "
     fi
-
 }
-
-if [ $USERID -ne 0 ]
- then
-    echo -e " $r Error : Please run this script with root access"
-    exit 1
-fi
 
 # yum install git -y &>>$LOGFILE
 
@@ -42,18 +41,19 @@ fi
 
 # VALIDATE $? " Installig the nginx"
 
-for i in $@ 
 
+for i in $@ 
  do
 
     yum list installed $i &>>$LOGFILE
 
-    if [ $? -ne 0 ]; then
+    if [ $? -ne 0 ]
+     then
 
         echo -e "$i not installed let's install it"
 
         yum install $i -y &>>$LOGFILE
-        
+
         VALIDATE $? "$i"
     else
 
@@ -62,3 +62,6 @@ for i in $@
     fi
 
 done
+
+
+
