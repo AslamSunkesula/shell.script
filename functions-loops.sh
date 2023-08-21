@@ -26,11 +26,11 @@ if [ $? -ne 0 ]
 
 then
 
-     echo -e $R "Installing the my sql is failure"
+     echo -e  " $N Installing the $R my sql is failure"
 
      else
 
-     echo  -e $R " installation my sql is success"
+     echo  -e  "$N installation $G my sql is success"
 
 fi
 
