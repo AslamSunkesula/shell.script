@@ -1,36 +1,61 @@
 #!/bin/bash
 
+red="\e[31m"
 
-DATE=$(date +%m-%d-%Y)
+green="\e[32m"
 
-SCRIPT_NAME=$0 #$0 will tell us the script name 
+nocolor="\e[0m"
 
-#LOGFILE=/tmp/$SCRIPT_NAME-$DATE.log
+y="\033[0;33m"
 
-VALIDATE() {   # this is a function to check the fail or pass 
+DATE=$(date +%F)
+
+SCRIPT_NAME=$0 #$0 will tell us the script name
+
+LOGSDIR=/home/centos/shellscript-logs
+
+LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log
+
+userid=$(id -u)
+
+if [ $userid -ne 0 ]; then
+    echo "  $red Error: You are not a root user $nocolor"
+    exit 1
+fi
+
+VALIDATE() { # this is a function to check the fail or pass
 
     if [ $1 -ne 0 ]; then
-        echo "$1 is error"
+        echo -e "Installing $2 is ---- $red error $nocolor "
         exit 1
     else
-        echo "$2 is success"
+        echo -e "Installing $2 is ----  $green success $nocolor"
 
     fi
 
 }
 
-userid=$(id -u)
+for i in $@; do
 
-if [ $userid -ne 0 ]; then
-    echo "Error: You are not a root user"
-    exit 1
-fi
+    yum list installed $i
+    if [ $? -ne 0 ]; then
+        echo " $i is not installed , let's install it "
 
-yum install mysql -y
+        yum install $i -y &>>$LOGFILE
+         VALIDATE $? "$i"
 
-VALIDATE $? "Insatalling mysql" ##&>>$LOGFILE
-#passing the 2 arguments to the validate function and $? --> passing input to the validate function to check previous command fail or pass
+    else
 
-yum install git -y
+        echo -e "$y $i is already installed $nocolor"
+    fi
 
-VALIDATE $? "Insatalling  git" ##&>>$LOGFILE
+done 
+
+# yum install mysql -y
+
+# VALIDATE $? "Insatalling mysql" &>>$LOGFILE
+# passing the 2 arguments to the validate function and $? --> passing input to the validate function to check previous command fail or pass
+
+# yum install git -y
+
+# VALIDATE $? "Insatalling  git" &>>$LOGFILE
