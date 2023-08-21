@@ -53,7 +53,8 @@ for i in $@
         echo -e "$i not installed let's install it"
 
         yum install $i -y &>>$LOGFILE
-
+        
+        VALIDATE $? "$i"
     else
 
         echo -e "$y $i is already installed"
