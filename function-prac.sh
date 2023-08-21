@@ -33,6 +33,30 @@ VALIDATE() {
     fi
 }
 
+
+
+
+# all args are in $@
+for i in $@
+do
+    yum list installed $i &>>$LOGFILE
+    if [ $? -ne 0 ]
+    then
+        echo "$i is not installed, let's install it"
+        yum install $i -y &>>$LOGFILE
+        VALIDATE $? "$i"
+    else
+        echo -e "$y $i is already installed $N"
+    fi
+
+    #yum install $i -y
+done
+
+
+
+
+
+
 # yum install git -y &>>$LOGFILE
 
 # VALIDATE $? " Installig the git"
