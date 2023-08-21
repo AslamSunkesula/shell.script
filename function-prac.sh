@@ -11,7 +11,7 @@ if [ $USERID -ne 0 ]; then
     exit 1
 fi
 
-yum install git -y 
+yum install gi -y 
 
 
 if [ $? -ne 0 ]
