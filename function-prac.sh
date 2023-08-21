@@ -6,22 +6,32 @@ r="\e[31m"
 
 g="\e[32m"
 
+
+VALIDATE() {
+
+if [ $? -ne 0 ]
+
+then 
+echo -e "$r $2 is error "
+
+else
+echo  -e "$g $2t is success "
+fi
+
+}
+
+
 if [ $USERID -ne 0 ]; then
     echo -e " $r Error : Please run this script with root access"
     exit 1
 fi
 
-yum install gi -y 
+yum install git -y 
+
+VALIDATE $? " Installig the git"
 
 
-if [ $? -ne 0 ]
 
-then 
-echo -e "$r Installing the git is error "
-
-else
-echo  -e "$g Installing the git is success "
-fi
 
 
 
