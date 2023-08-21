@@ -13,7 +13,7 @@ LOGSDIR=/home/centos/shellscript-logs
 
 script_name=$0
 
-LOGFILE=$LOGSDIR/$script_name/$DATE.log
+LOGFILE=$LOGSDIR/$script_name-$DATE.log
 
 
 VALIDATE() {
