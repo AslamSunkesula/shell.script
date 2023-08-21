@@ -1,12 +1,10 @@
 #!/bin/bash
 DATE=$(date +%F)
-#LOGSDIR=/c/Users/assua/shellscript-logs
-
+LOGSDIR=/home/centos/logs
 script_name=$0
-#LOGFILE=$LOGSDIR/$script_name-$DATE.log
+LOGFILE=$LOGSDIR/$script_name-$DATE.log
 
-
-LOGFILE=/tmp/$script_name-$DATE.log
+#LOGFILE=/tmp/$script_name-$DATE.log
 USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
@@ -30,7 +28,6 @@ then
 fi
 
 }
-
 
 
 if [ $USERID -ne 0 ] 
