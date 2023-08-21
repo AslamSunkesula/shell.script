@@ -42,7 +42,7 @@ VALIDATE() {
 # VALIDATE $? " Installig the nginx"
 
 
-for i in $@ 
+for i in "$@"
  do
 
     yum list installed $i &>>$LOGFILE
