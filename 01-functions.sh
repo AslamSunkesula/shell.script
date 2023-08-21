@@ -14,7 +14,7 @@ SCRIPT_NAME=$0 #$0 will tell us the script name
 
 LOGSDIR=/home/centos/shellscript-logs
 
-LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log
+LOGFILE=$LOGSDIR/$0-$DATE.log
 
 userid=$(id -u)
 
@@ -37,7 +37,8 @@ VALIDATE() { # this is a function to check the fail or pass
 
 for i in $@; do
 
-    yum list installed $i
+    yum list installed $i&>>$LOGFILE
+
     if [ $? -ne 0 ]; then
         echo " $i is not installed , let's install it "
 
