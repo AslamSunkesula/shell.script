@@ -22,3 +22,6 @@ echo "$r Installing the git is error "
 else
 echo "$g Installing the git is success "
 fi
+
+
+
