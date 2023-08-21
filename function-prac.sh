@@ -15,7 +15,7 @@ then
 echo -e "$r $2 is error "
 
 else
-echo  -e "$g $2t is success "
+echo  -e "$g $2 is success "
 fi
 
 }
@@ -29,6 +29,10 @@ fi
 yum install git -y 
 
 VALIDATE $? " Installig the git"
+
+yum install nginx -y 
+
+VALIDATE $? " Installig the nginx"
 
 
 
