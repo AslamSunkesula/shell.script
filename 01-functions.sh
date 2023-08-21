@@ -26,10 +26,10 @@ VALIDATE() {
 
     if [ $? -ne 0 ]
      then
-        echo -e "Installing the $2 ......$r Failure "
+        echo -e "$2 ......$r Failure "
 
     else
-        echo -e "Installing the $2.....$g Success "
+        echo -e "$2.....$g Success "
     fi
 }
 
@@ -41,27 +41,9 @@ VALIDATE() {
 
 # VALIDATE $? " Installig the nginx"
 
+yum install ngnix -y  &>>$LOGFILE
 
-for i in 
- do
 
-    yum list installed $i &>>$LOGFILE
-
-    if [ $? -ne 0 ]
-     then
-
-        echo -e "$i not installed let's install it"
-
-        yum install $i -y &>>$LOGFILE
-
-        VALIDATE $? "$i"
-    else
-
-        echo -e "$y $i is already installed"
-
-    fi
-
-done
-
+VALIDATE $? "installing the nginx"
 
 

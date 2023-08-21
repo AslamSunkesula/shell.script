@@ -42,26 +42,26 @@ VALIDATE() {
 # VALIDATE $? " Installig the nginx"
 
 
-for i in $@
- do
+# for i in $@
+#  do
 
-    yum list installed $i &>>$LOGFILE
+#     yum list installed $i &>>$LOGFILE
 
-    if [ $? -ne 0 ]
-     then
+#     if [ $? -ne 0 ]
+#      then
 
-        echo -e "$i not installed let's install it"
+#         echo -e "$i not installed let's install it"
 
-        yum install $i -y &>>$LOGFILE
+#         yum install $i -y # &>>$LOGFILE
 
-        VALIDATE $? "$i"
-    else
+#         VALIDATE $? "$i"
+#     else
 
-        echo -e "$y $i is already installed"
+#         echo -e "$y $i is already installed"
 
-    fi
+#     fi
 
-done
+# done
 
 
 
