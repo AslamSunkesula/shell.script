@@ -16,11 +16,6 @@ script_name=$0
 
 LOGFILE=$LOGSDIR/$script_name-$DATE.log
 
-if [ $USERID -ne 0 ]
-then
-    echo -e " $r Error : Please run this script with root access"
-    exit 1
-fi
 
 VALIDATE() {
 
@@ -33,6 +28,23 @@ VALIDATE() {
     fi
 }
 
+
+
+
+if [ $USERID -ne 0 ]
+then
+    echo -e " $r Error : Please run this script with root access"
+    exit 1
+fi
+
+
+yum install ngnix -y  &>>$LOGFILE
+
+
+VALIDATE $? "installing the nginx"
+
+
+
 # yum install git -y &>>$LOGFILE
 
 # VALIDATE $? " Installig the git"
@@ -41,9 +53,5 @@ VALIDATE() {
 
 # VALIDATE $? " Installig the nginx"
 
-yum install ngnix -y  &>>$LOGFILE
-
-
-VALIDATE $? "installing the nginx"
 
 
