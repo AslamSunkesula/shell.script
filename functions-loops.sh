@@ -1,9 +1,12 @@
 #!/bin/bash
 DATE=$(date +%F)
-LOGSDIR=/c/Users/assua/shellscript-logs
+#LOGSDIR=/c/Users/assua/shellscript-logs
 
 script_name=$0
-LOGFILE=$LOGSDIR/$script_name-$DATE.log
+#LOGFILE=$LOGSDIR/$script_name-$DATE.log
+
+
+LOGFILE=/c/Users/assua/shellscript-log/$script_name-$DATE.log
 USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
