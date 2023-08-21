@@ -14,7 +14,7 @@ if [ $USERID -ne 0 ]
 
 then 
 
-echo " Error : Please try with the sudo access "
+echo -e " $R Error : Please try with the sudo access "
 exit 1
 fi
 
@@ -22,8 +22,16 @@ yum install git -y
 
 
 
+if [ $? -ne 0 ]
 
+then
 
+     echo -e $R "Installing the my sql is failure"
 
+     else
+
+     echo  -e $R " installation my sql is success"
+
+fi
 
 # all args are in $@
