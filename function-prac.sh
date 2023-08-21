@@ -20,10 +20,10 @@ VALIDATE() {
 
     if [ $? -ne 0 ]
      then
-        echo -e "$r $2 is error "
+    echo -e "Installing the $2 ......$r Failure "
 
     else
-        echo -e "$g $2 is success "
+        echo -e "Installing the $2.....$g Success "
     fi
 
 }
@@ -46,15 +46,15 @@ for i in $@
 
  do
 
-    yum list installed $i &>>LOGFILE
+    yum list installed $i &>>$LOGFILE
 
     if [ $? -ne 0 ]; then
 
-        echo "$i not installed let's install it "
+        echo -e "$i not installed let's install it"
 
     else
 
-        echo " $y $i is already installed"
+        echo -e "$y $i is already installed"
 
     fi
 
