@@ -1,5 +1,4 @@
 #!/bin/bash
-
 APP_logs=/home/centos/app-logs
 
 DATE=$(date +%F)
