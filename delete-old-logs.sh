@@ -10,7 +10,7 @@ LOGFILE=$LOGSDIR/$script_name-$DATE.log
 
 find_to_delete=$(find $APP_logs -name "*.log" -type f -mtime +14)
 
-echo"$find_to_delete "
+echo"$find_to_delete"
 
 
 
