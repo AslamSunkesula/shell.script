@@ -25,7 +25,8 @@ VALIDATE() {
 
 }
 
-if [ $USERID -ne 0 ]; then
+if [ $USERID -ne 0 ];
+ then
 
     echo -e " $R Error : Please try with the sudo access "
     exit 1
