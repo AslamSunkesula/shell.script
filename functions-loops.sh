@@ -13,7 +13,8 @@ Y="\e[33m"
 
 VALIDATE() {
 
-    if [ $? -ne 0 ]; then
+    if [ $? -ne 0 ]
+     then
 
         echo -e " $N Installing the $R my sql is failure"
 
@@ -25,7 +26,8 @@ VALIDATE() {
 
 }
 
-if [ $USERID -ne 0 ];
+if [ $USERID -ne 0 ]
+
  then
 
     echo -e " $R Error : Please try with the sudo access "
@@ -37,7 +39,9 @@ yum install git -y &>>$LOGFILE
 # all args are in $@
 for i in $@; do
     yum list installed $i &>>$LOGFILE
-    if [ $? -ne 0 ]; then
+    if [ $? -ne 0 ]
+    
+     then
         echo "$i is not installed, let's install it"
         yum install $i -y &>>$LOGFILE
 
