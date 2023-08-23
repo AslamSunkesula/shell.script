@@ -12,9 +12,10 @@ find_to_delete=$(find $APP_logs -name "*.log" -type f -mtime +14)
 
 echo "$find_to_delete"
 
+echo "the script stated running"
 
 while read line;
 do
-   echo "Deleting  $line" ;
+   echo "Deleting  $line" &>> $LOGFILE
    rm  -rf $line        
 done <<< $find_to_delete
