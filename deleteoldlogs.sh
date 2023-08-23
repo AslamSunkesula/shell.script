@@ -1,7 +1,7 @@
 #!/bin/bash
 
 APP_logs=/home/centos/app-logs
-
+#APP_logs=/home/centos/app-logs
 DATE=$(date +%F)
 LOGSDIR=/home/centos/logs
 script_name=$0
