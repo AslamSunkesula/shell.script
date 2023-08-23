@@ -11,46 +11,35 @@ G="\e[32m"
 N="\e[0m"
 Y="\e[33m"
 
-
-
 VALIDATE() {
 
-if [ $? -ne 0 ]
+    if [ $? -ne 0 ]; then
 
-then
+        echo -e " $N Installing the $R my sql is failure"
 
-     echo -e  " $N Installing the $R my sql is failure"
+    else
 
-     else
+        echo -e "$N installation $G my sql is success"
 
-     echo  -e  "$N installation $G my sql is success"
-
-fi
+    fi
 
 }
 
+if [ $USERID -ne 0 ]; then
 
-if [ $USERID -ne 0 ] 
-
-then 
-
-echo -e " $R Error : Please try with the sudo access "
-exit 1
+    echo -e " $R Error : Please try with the sudo access "
+    exit 1
 fi
 
 yum install git -y &>>$LOGFILE
 
-
-
 # all args are in $@
-for i in $@
-do
+for i in $@; do
     yum list installed $i &>>$LOGFILE
-    if [ $? -ne 0 ]
-    then
+    if [ $? -ne 0 ]; then
         echo "$i is not installed, let's install it"
         yum install $i -y &>>$LOGFILE
-        
+
         VALIDATE $? "$i"
     else
         echo -e "$Y $i is already installed $N"
@@ -58,6 +47,5 @@ do
 
     #yum install $i -y
 done
-
 
 # all args are in $@
