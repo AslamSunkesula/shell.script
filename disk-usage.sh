@@ -12,17 +12,21 @@ DISK_USAGE=$(df -hT | grep -vE 'tmpfs|Filesystem')
 
 DISK_USAGE_THRESHOLD=22
 
-while IFS= read line; do
+#IFS= means internal feild seperator is space.
+while IFS= read line
+do  
+    # this command will give you usage in number format for comparision
     usage=$(echo $line | awk '{print $6}' | cut -d % -f1)
+    # this command will give us partition
     partition=$(echo $line | awk '{print $1}')
     #now you need to check whether it is more than threshold or not
-    if [ $usage -gt $DISK_USAGE_THRESHOLD ]; then
-
-        message+="HIGH DISK USAGE on $partition: $usage"
+    if [ $usage -gt $DISK_USAGE_THRESHOLD ];
+    then
+        message+="HIGH DISK USAGE on $partition: $usage\n"
     fi
-
-    echo
-
-done <<<$DISK_USAGE
+done <<< $DISK_USAGE
 
 echo "message : $message"
+
+
+sh mail.sh info@joindevops.com "High Disk Usage" "$message" "DEVOPS TEAM" "High Disk usage"
