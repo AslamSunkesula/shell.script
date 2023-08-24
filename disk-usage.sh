@@ -30,3 +30,4 @@ echo "message : $message"
 
 
 sh mail.sh info@joindevops.com "High Disk Usage" "$message" "DEVOPS TEAM" "High Disk usage"
+
