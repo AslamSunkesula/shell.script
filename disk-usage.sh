@@ -10,7 +10,7 @@ Y="\e[33m"
 
 DISK_USAGE=$(df -hT | grep -vE 'tmpfs|Filesystem')
 
-DISK_USAGE_THRESHOLD=30
+DISK_USAGE_THRESHOLD=22
 
 while IFS= read line; do
     usage=$(echo $line | awk '{print $6}' | cut -d % -f1)
